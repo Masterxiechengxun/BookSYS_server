@@ -24,10 +24,8 @@ class myTcp : public QObject
 public:
     myTcp(QObject *parent = 0);
     ~myTcp();
-    void updatePeerList();
 public slots:
     void onNewConnection();
-    void errorHandle(QAbstractSocket::SocketError errors);
     void slot_readData();
     void onDisConnection();
     void slotSendFile(qint64);
@@ -35,18 +33,19 @@ private:
     QTcpServer *tcpServer;
     quint16 serverPort;
     int sumPeer;
-    QMap<QTcpSocket*, QString> peerList;
+    QMap<QString, QTcpSocket*> peerList;
     connDB *conn;
     QFile *file;
     QFile *cryptoFile;
     QByteArray outBuf;
     qint64 totalSize;
     qint64 sizeToWrite;
+    qint64 sizeWritten;
     qint64 loadSize;
     bool isSendFile;
 private:
     void sendDate(QTcpSocket *targetSocket, const QString &str);
-    void startLoopTime();
+    void updatePeerList();
 };
 
 #endif // MYTCP_H

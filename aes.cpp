@@ -207,7 +207,7 @@ void AES::SetNbNkNr(int keyS)
     if (keyS == Bits128)
     {
         Nk = 4;   // key size = 4 words = 16 bytes = 128 bits
-        Nr = 6;  // rounds for algorithm = 10
+        Nr = 1;  // rounds for algorithm = 10
     }
     else if (keyS == Bits192)
     {
