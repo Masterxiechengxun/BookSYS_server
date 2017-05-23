@@ -33,3 +33,8 @@ HEADERS += \
     conndb.h \
     bookmanager.h \
     aes.h
+
+RC_FILE = appicon.rc
+
+DISTFILES += \
+    appicon.rc
